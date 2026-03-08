@@ -1911,9 +1911,9 @@ async function ipFetch(ip) {
   if (btn) btn.disabled = true;
   ipShowState('loading');
   try {
-    var url = 'http://ip-api.com/json/' + (ip || '') + '?fields=status,message,country,countryCode,regionName,city,zip,lat,lon,timezone,isp,org,as,query';
+    var url = 'https://ip-api.com/json/' + (ip || '') + '?fields=status,message,country,countryCode,regionName,city,zip,lat,lon,timezone,isp,org,as,query';
     var res = await fetch(url);
-    if (!res.ok) throw new Error('HTTP ' + res.status);
+    if (!res.ok) throw new Error('HTTPS ' + res.status);
     var data = await res.json();
     if (data.status === 'fail') throw new Error(data.message || 'IP tidak valid');
     ipRawData = data;
